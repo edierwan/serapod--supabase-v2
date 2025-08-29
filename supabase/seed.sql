@@ -56,7 +56,7 @@ insert into products (
   nicotine_free, nicotine_strength_mg_per_ml, volume_ml, child_resistant_packaging
 )
 select ctx.pg_id, ctx.cat_id, ctx.brand_id, ctx.mfr_id,
-       'PRD-000001', 'SeraX Strawberry 30ml', 'https://placehold.co/512x512.png?text=Product',
+       'PRD-000001', 'SeraX Strawberry 30ml', 'https://img-wrapper.vercel.app/image?url=https://placehold.co/512x512.png?text=Product',
        'Strawberry vape e-liquid', 'Smooth strawberry profile',
        'Strawberry', 1999, 'MY', 120,
        false, 12, 30, true
