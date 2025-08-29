@@ -46,11 +46,14 @@ async function createProduct(req: Request) {
     return createSuccessResponse(data, 201);
   } catch (err) {
     console.error(err);
-    return createErrorResponse(err.message, "INTERNAL_ERROR", 500);
+    // FIX: Safely handle the 'unknown' type for the caught error.
+    const message = err instanceof Error ? err.message : "An unexpected error occurred.";
+    return createErrorResponse(message, "INTERNAL_ERROR", 500);
   }
 }
 
-Deno.serve(async (req) => {
+// FIX: Removed the unnecessary 'async' keyword.
+Deno.serve((req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-pg-id" } });
   }
